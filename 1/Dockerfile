@@ -8,4 +8,6 @@ RUN apt-get -y install fp-compiler
 WORKDIR /app
 COPY zadanie.pas ./zadanie.pas
 RUN fpc -ozadanie zadanie.pas
+RUN rm zadanie.pas
+
 ENTRYPOINT ["./zadanie"]
