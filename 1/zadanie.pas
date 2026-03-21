@@ -3,12 +3,12 @@ program zadanie;
 type
 	IntArray = array of Integer;
 
-function randomNumbers(): IntArray;
+function randomNumbers(l, h, c: Integer): IntArray;
 var
 	i: Integer;
 begin
-	SetLength(randomNumbers, 50);
-	for i := 0 to 49 do randomNumbers[i] := random(100);
+	SetLength(randomNumbers, c);
+	for i := 0 to c-1 do randomNumbers[i] := random(h-l) + l;
 end;
 
 procedure sortNumbers(var num: IntArray);
@@ -35,7 +35,7 @@ var
 
 begin
 	randomize;
-	arr := randomNumbers();
+	arr := randomNumbers(10, 50, 16);
 	writeln('Before sort');
 	for i := Low(arr) to High(arr) do writeln(arr[i]);
 	sortNumbers(arr);
