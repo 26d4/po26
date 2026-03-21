@@ -1,7 +1,14 @@
-program zadanie;
+unit zadanie;
+
+interface
 
 type
 	IntArray = array of Integer;
+
+function randomNumbers(l, h, c: Integer): IntArray;
+procedure sortNumbers(var num: IntArray);
+
+implementation
 
 function randomNumbers(l, h, c: Integer): IntArray;
 var
@@ -13,7 +20,7 @@ end;
 
 procedure sortNumbers(var num: IntArray);
 var
-	i, j, index, l : Integer;
+	i, j, index, l: Integer;
 begin
 	l := Low(num);
 	for i := l+1 to High(num) do 
@@ -29,16 +36,4 @@ begin
 	end;
 end;
 
-var
-	arr: array of Integer;
-	i: Integer;
-
-begin
-	randomize;
-	arr := randomNumbers(10, 50, 16);
-	writeln('Before sort');
-	for i := Low(arr) to High(arr) do writeln(arr[i]);
-	sortNumbers(arr);
-	writeln('After sort');
-	for i := Low(arr) to High(arr) do writeln(arr[i]);
 end.
