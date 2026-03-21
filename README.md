@@ -14,3 +14,13 @@
 
 - [x] 5.0 Skrypt w bashu do uruchamiania aplikacji w Pascalu via docker
   ([d805b64](https://github.com/26d4/po26/commit/d805b648a36b40c9ea550b3e79aa77a06defceba))
+
+**Zadanie 2** Wzorce architektury
+
+Symfony (PHP)
+
+- [ ] 3.0 Należy stworzyć jeden model z kontrolerem z produktami, zgodnie z CRUD (JSON)
+- [ ] 3.5 Należy stworzyć skrypty do testów endpointów via curl (JSON)
+- [ ] 4.0 Należy stworzyć dwa dodatkowe kontrolery wraz z modelami  (JSON)
+- [ ] 4.5 Należy stworzyć widoki do wszystkich kontrolerów
+- [ ] 5.0 Stworzenie panelu administracyjnego
