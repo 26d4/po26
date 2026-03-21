@@ -9,4 +9,4 @@ losowania: od, do, ile
 
 - [x] 4.5 5 testów jednostkowych testujące procedury
 
-- [ ] 5.0 Skrypt w bashu do uruchamiania aplikacji w Pascalu via docker
+- [x] 5.0 Skrypt w bashu do uruchamiania aplikacji w Pascalu via docker
