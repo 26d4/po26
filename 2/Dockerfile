@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 RUN apt-get -y dist-upgrade
 RUN apt-get -y install php php-sqlite3 php-xml php-dom curl sqlite3
-RUN apt-get -y install 7zip
+RUN apt-get -y install 7zip php-intl
 
 RUN curl -1sSLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | bash
 RUN apt-get -y install symfony-cli
@@ -19,11 +19,13 @@ EXPOSE 8000/tcp
 RUN useradd --create-home --shell /bin/bash defaultuser
 USER defaultuser
 
-RUN mkdir /home/defaultuser/php
-#VOLUME /home/defaultuser/php
+RUN mkdir -p /home/defaultuser/php/var
+VOLUME /home/defaultuser/php/var
 WORKDIR /home/defaultuser/php
 COPY --chown=defaultuser ./ ./
-RUN composer install
+#RUN env APP_ENV=prod composer install --no-interaction --no-dev --optimize-autoloader
+RUN composer install --no-interaction
+#RUN composer dump-env prod
 RUN chmod +x entrypoint.sh
 
 ENTRYPOINT ["./entrypoint.sh"]

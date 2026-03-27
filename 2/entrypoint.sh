@@ -2,11 +2,6 @@
 
 cd "$(dirname "$(readlink -e "$0")")"
 
-#source ./.env
-#source ./.env.local
-
-#if ! [[ -e "$DB_FILE" ]]; then
-#	sqlite3 "$DB_FILE" < populate.sql
-#fi
+#export APP_ENV=prod
 
 exec bash
