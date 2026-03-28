@@ -20,11 +20,14 @@ RUN useradd --create-home --shell /bin/bash defaultuser
 USER defaultuser
 
 RUN mkdir -p /home/defaultuser/php/var
-VOLUME /home/defaultuser/php/var
+#VOLUME /home/defaultuser/php/var
 WORKDIR /home/defaultuser/php
-COPY --chown=defaultuser ./ ./
+COPY --chown=defaultuser composer.json composer.lock ./
 #RUN env APP_ENV=prod composer install --no-interaction --no-dev --optimize-autoloader
-RUN composer install --no-interaction
+RUN composer install --no-interaction --no-scripts --no-autoloader
+COPY --chown=defaultuser ./ ./
+RUN composer dump-autoload --optimize
+RUN composer run-script post-install-cmd
 #RUN composer dump-env prod
 RUN chmod +x entrypoint.sh
 
