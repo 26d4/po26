@@ -16,4 +16,5 @@ else
 	fi
 fi
 
-exec bash
+symfony serve
+bash
