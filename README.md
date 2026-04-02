@@ -15,7 +15,7 @@
 
 Symfony (PHP)
 
-- [ ] 3.0 Należy stworzyć jeden model z kontrolerem z produktami, zgodnie z CRUD (JSON)
+- [x] 3.0 Należy stworzyć jeden model z kontrolerem z produktami, zgodnie z CRUD (JSON)
 - [ ] 3.5 Należy stworzyć skrypty do testów endpointów via curl (JSON)
 - [ ] 4.0 Należy stworzyć dwa dodatkowe kontrolery wraz z modelami  (JSON)
 - [ ] 4.5 Należy stworzyć widoki do wszystkich kontrolerów
