@@ -14,7 +14,11 @@ IMG_REF="${IMG_HOST:+$IMG_HOST${IMG_PORT:+:$IMG_PORT}/}$IMG_NAMESPACE/$IMG_REPOS
 
 echo "$IMG_REF"
 
-if [ "$1" == "build" ]; then
-	docker build --tag "$IMG_REF" "$MYDIR"
-fi
-docker run -it --network host -v "$IMG_REPOSITORY"-var:/home/defaultuser/php/var "$IMG_REF"
+while (( $# > 0 )); do
+	case "$1" in
+		clean) [ -z "$(docker image ls -q "$IMG_REF")" ] || docker image rm --force "$IMG_REF";;
+		build) docker build --tag "$IMG_REF" "$MYDIR";;
+		run) [ -z "$(docker image ls -q "$IMG_REF")" ] || docker run -it --network host -v "$MYDIR":/home/ubuntu/php:rw "$IMG_REF";; 
+	esac
+	shift
+done
