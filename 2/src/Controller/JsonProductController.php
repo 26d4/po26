@@ -69,7 +69,7 @@ final class JsonProductController extends AbstractController
 			$diff = array_diff($entityManager->getClassMetadata(Product::class)->getFieldNames(), array_keys(json_decode($jsonData, true)));
 			$diff = array_diff($diff, array('id'));
 			if (count($diff) > 0) {
-				return new Response('Missing fields: ' . implode(', ', $diff), 400);
+				return new Response('{"message": "Missing fields: ' . implode(', ', $diff) . '"}', 400);
 			}
 		}
 		
