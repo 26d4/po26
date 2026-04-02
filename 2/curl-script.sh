@@ -34,7 +34,7 @@ announce curl --no-progress-meter --header "Content-Type: application/json" --re
 echo
 sleep 1
 
-tc "Show product again" "$(announce curl http://localhost:8000/api/product/"$ID")" "{\"id\":$ID,\"name\":\"xyz\",\"price\":4950}"
+tc "Show product again" "$(announce curl --no-progress-meter http://localhost:8000/api/product/"$ID")" "{\"id\":$ID,\"name\":\"xyz\",\"price\":4950}"
 echo
 sleep 1
 
