@@ -16,20 +16,9 @@ COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 EXPOSE 80/tcp
 EXPOSE 8000/tcp
 
-#RUN useradd --create-home --shell /bin/bash defaultuser
 USER ubuntu
 
 RUN mkdir -p /home/ubuntu/php/var
-#VOLUME /home/defaultuser/php/var
 WORKDIR /home/ubuntu/php
-#COPY --chown=defaultuser composer.json composer.lock ./
-#RUN env APP_ENV=prod composer install --no-interaction --no-dev --optimize-autoloader
-#RUN composer install --no-interaction --no-scripts --no-autoloader
-#COPY --chown=defaultuser ./ ./
-#RUN composer dump-autoload --optimize
-#RUN composer run-script post-install-cmd
-#RUN composer dump-env prod
-#RUN chmod +x entrypoint.sh
 
-#ENTRYPOINT ["./entrypoint.sh"]
 ENTRYPOINT ["/usr/bin/bash", "./entrypoint.sh"]
