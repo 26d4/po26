@@ -32,4 +32,4 @@ WORKDIR /home/ubuntu/php
 #RUN chmod +x entrypoint.sh
 
 #ENTRYPOINT ["./entrypoint.sh"]
-ENTRYPOINT ["/usr/bin/bash"]
+ENTRYPOINT ["/usr/bin/bash", "./entrypoint.sh"]
