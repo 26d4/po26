@@ -81,10 +81,8 @@ final class JsonUserController extends AbstractController
 	#[Route('/{id}', name: 'app_json_user_delete', methods: ['DELETE'], format: 'json')]
 	public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
 	{
-		if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->getPayload()->getString('_token'))) {
-			$entityManager->remove($user);
-			$entityManager->flush();
-		}
+		$entityManager->remove($user);
+		$entityManager->flush();
 
 		return $this->json(null, Response::HTTP_NO_CONTENT);
 	}
