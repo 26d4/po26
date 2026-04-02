@@ -65,6 +65,14 @@ final class JsonProductController extends AbstractController
 			return new Response((string) $errors, 400);
 		}
 		
+		if ($request->getMethod() === 'PUT') {
+			$diff = array_diff($entityManager->getClassMetadata(Product::class)->getFieldNames(), array_keys(json_decode($jsonData, true)));
+			$diff = array_diff($diff, array('id'));
+			if (count($diff) > 0) {
+				return new Response('Missing fields: ' . implode(', ', $diff), 400);
+			}
+		}
+		
 		$serializer->deserialize($jsonData, Product::class, 'json', ['object_to_populate' => $product]);
 		$entityManager->flush();
 		
