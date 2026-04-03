@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-cd "$(dirname "$(readlink -f "$0")")"
+cd "$(dirname "$(readlink -f "$0")")" || exit
 
 export TERM
 
