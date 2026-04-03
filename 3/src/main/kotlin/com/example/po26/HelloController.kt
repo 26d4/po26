@@ -6,10 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping
 
 @RestController
 class HelloController {
+	val aList: List<String> = listOf("foo", "bar")
+	val restrictedList: List<String> = listOf("baz")
 
 	@GetMapping("/hello")
-	fun hello(@RequestParam(value = "name", defaultValue = "World") name: String): String {
-		return String.format("Hello %s!", name);
+	fun hello(): List<String> {
+		return aList + restrictedList;
 	}
 
 }
