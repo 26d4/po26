@@ -25,4 +25,4 @@ RUN mkdir -p /home/ubuntu/app
 WORKDIR /home/ubuntu/app
 #COPY --chown=ubuntu ./ ./
 
-ENTRYPOINT ["/usr/bin/bash"]
+ENTRYPOINT ["/usr/bin/bash", "entrypoint.sh"]

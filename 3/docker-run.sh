@@ -18,7 +18,7 @@ while (( $# > 0 )); do
 	case "$1" in
 		clean) [ -z "$(docker image ls -q "$IMG_REF")" ] || docker image rm --force "$IMG_REF";;
 		build) docker build --tag "$IMG_REF" "$MYDIR";;
-		run) [ -z "$(docker image ls -q "$IMG_REF")" ] || docker run -it --network host -v "$MYDIR":/home/ubuntu/app:rw -v "$IMG_REPOSITORY"-gradle:/home/ubuntu/.gradle "$IMG_REF";; 
+		run) [ -z "$(docker image ls -q "$IMG_REF")" ] || docker run -it --network host -e TERM="$TERM" -v "$MYDIR":/home/ubuntu/app:rw -v "$IMG_REPOSITORY"-gradle:/home/ubuntu/.gradle "$IMG_REF";; 
 	esac
 	shift
 done
