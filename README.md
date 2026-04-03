@@ -16,7 +16,11 @@
 Symfony (PHP)
 
 - [x] 3.0 Należy stworzyć jeden model z kontrolerem z produktami, zgodnie z CRUD (JSON)
+  ([a77766b](https://github.com/26d4/po26/commit/a77766b3be0292d2119a329ad23271cd9d2a5be9))
 - [x] 3.5 Należy stworzyć skrypty do testów endpointów via curl (JSON)
+  ([7ac1abc](https://github.com/26d4/po26/commit/7ac1abcec7e8553fb22d7bdb8d9f3d7ca19d1399))
 - [x] 4.0 Należy stworzyć dwa dodatkowe kontrolery wraz z modelami  (JSON)
+  ([43673db](https://github.com/26d4/po26/commit/43673db815a7e46f7b37225de0affe80fdabd066))
 - [x] 4.5 Należy stworzyć widoki do wszystkich kontrolerów
+  ([43673db](https://github.com/26d4/po26/commit/43673db815a7e46f7b37225de0affe80fdabd066))
 - [ ] 5.0 Stworzenie panelu administracyjnego
