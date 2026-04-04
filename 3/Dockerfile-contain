@@ -1,0 +1,14 @@
+FROM eclipse-temurin:17 AS build
+RUN mkdir /app
+WORKDIR /app
+COPY build.gradle.kts settings.gradle.kts gradlew ./
+COPY ./gradle ./gradle
+RUN ./gradlew dependencies
+COPY src ./src
+RUN ./gradlew bootJar
+# CMD ["/bin/sh"]
+
+FROM chainguard/jre:openjdk-17
+WORKDIR /app
+COPY --from=build /app/build/libs/app.jar ./app.jar
+CMD ["-jar", "app.jar"]

@@ -14,8 +14,8 @@ java {
 	}
 }
 
-tasks.jar {
-    archiveFileName = "${project.name}.jar"
+tasks.bootJar {
+	archiveFileName = "app.jar"
 }
 
 repositories {
