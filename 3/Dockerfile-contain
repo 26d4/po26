@@ -8,7 +8,7 @@ COPY src ./src
 RUN ./gradlew bootJar
 # CMD ["/bin/sh"]
 
-FROM chainguard/jre:openjdk-17
+FROM ubuntu/jre:17-24.04_stable
 WORKDIR /app
 COPY --from=build /app/build/libs/app.jar ./app.jar
-CMD ["-jar", "app.jar"]
+CMD ["exec", "java", "-jar", "/app/app.jar"]
