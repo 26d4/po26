@@ -36,8 +36,13 @@ Aplikacja ma oczywiście zawierać jeden kontroler i powinna zostać
 napisana w języku Kotlin. Oparta powinna zostać na frameworku Spring
 Boot. Serwis do autoryzacji powinien być singletonem.
 
-- [ ] 3.0 Należy stworzyć jeden kontroler wraz z danymi wyświetlanymi z listy na endpoint’cie w formacie JSON - Kotlin + Spring Boot
-- [ ] 3.5 Należy stworzyć klasę do autoryzacji (mock) jako Singleton w formie eager
-- [ ] 4.0 Należy obsłużyć dane autoryzacji przekazywane przez użytkownika
-- [ ] 4.5 Należy wstrzyknąć singleton do głównej klasy via @Autowired lub kontruktor (constructor injection)
-- [ ] 5.0 Obok wersji Eager do wyboru powinna być wersja Singletona w wersji lazy
+- [x] 3.0 Należy stworzyć jeden kontroler wraz z danymi wyświetlanymi z listy na endpoint’cie w formacie JSON - Kotlin + Spring Boot
+  ([27805a6](https://github.com/26d4/po26/commit/27805a6392c3d82109836799366c5ef7d35567c5))
+- [x] 3.5 Należy stworzyć klasę do autoryzacji (mock) jako Singleton w formie eager
+  ([fd2cb3d](https://github.com/26d4/po26/commit/fd2cb3dd24b940f6e8519e899b43090aa5e2cbd9))
+- [x] 4.0 Należy obsłużyć dane autoryzacji przekazywane przez użytkownika
+  ([fd2cb3d](https://github.com/26d4/po26/commit/fd2cb3dd24b940f6e8519e899b43090aa5e2cbd9))
+- [x] 4.5 Należy wstrzyknąć singleton do głównej klasy via @Autowired lub kontruktor (constructor injection)
+  ([9bf96ce](https://github.com/26d4/po26/commit/9bf96ce168b6616f07f5b7d42b0ec2076ea99223))
+- [x] 5.0 Obok wersji Eager do wyboru powinna być wersja Singletona w wersji lazy
+  ([fddcdb6](https://github.com/26d4/po26/commit/fddcdb6dd4c5176e244c2ab300f52456f66c86e7))
