@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.context.annotation.Lazy
 
 @RestController
+@Lazy
 class HelloController(val auth: Auth.AuthSingleton) {
 
 	val aList: List<String> = listOf("foo", "bar", "baz")
