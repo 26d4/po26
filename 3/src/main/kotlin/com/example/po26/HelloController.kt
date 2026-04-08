@@ -8,9 +8,7 @@ import jakarta.servlet.http.HttpServletResponse
 import org.springframework.beans.factory.annotation.Autowired
 
 @RestController
-class HelloController {
-	
-	val auth = Auth
+class HelloController(val auth: Auth.AuthSingleton) {
 
 	val aList: List<String> = listOf("foo", "bar", "baz")
 
