@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+exec docker run --name go-container \
+    --rm -v "$(pwd -P)":/work -w /work \
+    ubuntu/go:1.22-24.04_stable \
+    exec go "$@"
