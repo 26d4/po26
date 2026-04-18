@@ -28,7 +28,7 @@ func main() {
 
 		if err != nil {
 		    e.Logger.Error("failed to get response", "error", err)
-		    return echo.NewHTTPError(http.StatusBadGateway, "Bad API response")
+		    return echo.NewHTTPError(http.StatusBadGateway, "Failed to get response")
 		}
 
 		return c.JSONBlob(http.StatusOK, response)
