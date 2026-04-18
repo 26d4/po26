@@ -18,19 +18,19 @@ type WeatherProxy struct {
 	StaleTime int
 }
 
-func (wp WeatherProxy) cacheGet(url string) ([]byte, string) {
+func (wp WeatherProxy) cacheGet(url string) ([]byte, error) {
 	response, err := http.Get(url)
-	if err != nil { return []byte{}, err.Error() }
+	if err != nil { return []byte{}, err }
 	
 	responseData, err := io.ReadAll(response.Body)
 	if err == nil {
 		wp.DB.Create(&GetQuery{URL: url, Response: responseData})
-		return responseData, ""
+		return responseData, nil
 	}
-	return nil, err.Error()
+	return nil, err
 }
 
-func (wp WeatherProxy) proxyGet(url string) ([]byte, string) {
+func (wp WeatherProxy) proxyGet(url string) ([]byte, error) {
 	staleFmt := fmt.Sprintf("-%d minutes", wp.StaleTime)
 
 	var count int64
@@ -47,6 +47,6 @@ func (wp WeatherProxy) proxyGet(url string) ([]byte, string) {
 			return wp.cacheGet(url)
 		}
 		
-		return q.Response, ""
+		return q.Response, nil
 	}
 }
