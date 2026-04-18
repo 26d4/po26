@@ -2,31 +2,36 @@ package main
 
 import (
 	"net/http"
-	"io"
 
 	"github.com/labstack/echo/v5"
 	"github.com/labstack/echo/v5/middleware"
+	"github.com/libtnb/sqlite"
+	"gorm.io/gorm"
 )
 
 func main() {
 	e := echo.New()
+	
+	db, err := gorm.Open(sqlite.Open("db.sqlite"), &gorm.Config{})
+	if err != nil {
+		e.Logger.Error(err.Error())
+	}
+	
+	db.AutoMigrate(GetQuery{})
+	
 	e.Use(middleware.RequestLogger())
 
 	e.GET("/", func(c *echo.Context) error {
-		response, err := http.Get("http://api.open-meteo.com/v1/forecast?latitude=50.0614&longitude=19.9366&timezone=auto&current=temperature_2m,precipitation,weather_code,wind_speed_10m")
+		wp := WeatherProxy{db, 5}
 
-		if err != nil {
-		    e.Logger.Error(err.Error())
+		response, err := wp.proxyGet("http://api.open-meteo.com/v1/forecast?latitude=50.0614&longitude=19.9366&timezone=auto&current=temperature_2m,precipitation,weather_code,wind_speed_10m")
+
+		if err != "" {
+		    e.Logger.Error(err)
 		    return echo.NewHTTPError(http.StatusBadGateway, "Bad API response")
 		}
 
-		responseData, err := io.ReadAll(response.Body)
-		if err != nil {
-		    e.Logger.Error(err.Error())
-		    return echo.NewHTTPError(http.StatusBadGateway, "Failed to read API response")
-		}
-
-		return c.JSONBlob(http.StatusOK, responseData)
+		return c.JSONBlob(http.StatusOK, response)
 	})
 
 	if err := e.Start(":1323"); err != nil {

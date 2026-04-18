@@ -2,4 +2,4 @@
 
 IMAGE="golang:1.25-alpine3.22"
 
-exec docker run -it --rm -v "$PWD":/usr/src/myapp -v gopath:/go -w /usr/src/myapp "$IMAGE" go "$@"
+exec docker run -it --network host --rm -v "$PWD":/usr/src/myapp -v gopath:/go -w /usr/src/myapp "$IMAGE" go "$@"
