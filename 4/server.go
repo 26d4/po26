@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"time"
 
 	"github.com/labstack/echo/v5"
 	"github.com/labstack/echo/v5/middleware"
@@ -22,7 +23,7 @@ func main() {
 	e.Use(middleware.RequestLogger())
 
 	e.GET("/", func(c *echo.Context) error {
-		wp := WeatherProxy{db, 5}
+		wp := WeatherProxy{db, 5*time.Minute}
 
 		response, err := wp.proxyGet("http://api.open-meteo.com/v1/forecast?latitude=50.0614&longitude=19.9366&timezone=auto&current=temperature_2m,precipitation,weather_code,wind_speed_10m")
 

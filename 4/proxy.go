@@ -4,7 +4,8 @@ import (
 	"net/http"
 	"io"
 	"gorm.io/gorm"
-	"fmt"
+	// "fmt"
+	"time"
 )
 
 type GetQuery struct {
@@ -15,7 +16,7 @@ type GetQuery struct {
 
 type WeatherProxy struct {
 	DB *gorm.DB
-	StaleTime int
+	StaleTime time.Duration
 }
 
 func (wp WeatherProxy) cacheGet(url string) ([]byte, error) {
@@ -31,17 +32,15 @@ func (wp WeatherProxy) cacheGet(url string) ([]byte, error) {
 }
 
 func (wp WeatherProxy) proxyGet(url string) ([]byte, error) {
-	staleFmt := fmt.Sprintf("-%d minutes", wp.StaleTime)
-
 	var count int64
-	result := wp.DB.Model(GetQuery{}).Where("created_at > datetime('now', ?) AND url = ?", staleFmt, url).Count(&count)
+	result := wp.DB.Model(GetQuery{}).Where("created_at > ? AND url = ?", time.Now().Add(-wp.StaleTime), url).Count(&count)
 //	fmt.Println("COUNT: ", count)
 	
 	if result.Error != nil || count == 0 {
 		return wp.cacheGet(url)
 	} else {
 		var q GetQuery
-		result := wp.DB.Where("created_at > datetime('now', ?) AND url = ?", staleFmt, url).Order("created_at DESC").Take(&q)
+		result := wp.DB.Where("created_at > ? AND url = ?", time.Now().Add(-wp.StaleTime), url).Order("created_at DESC").Take(&q)
 		
 		if result.Error != nil {
 			return wp.cacheGet(url)
