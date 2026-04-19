@@ -19,19 +19,24 @@ type WeatherProxy struct {
 	StaleTime time.Duration
 }
 
+func (wp WeatherProxy) cacheClean() {
+	wp.DB.Unscoped().Where("created_at < ?", time.Now().Add(-wp.StaleTime)).Delete(&GetQuery{})
+}
+
 func (wp WeatherProxy) cacheGet(url string) ([]byte, error) {
 	response, err := http.Get(url)
 	if err != nil { return []byte{}, err }
 	
 	responseData, err := io.ReadAll(response.Body)
 	if err == nil {
+		wp.cacheClean()
 		wp.DB.Create(&GetQuery{URL: url, Response: responseData})
 		return responseData, nil
 	}
 	return nil, err
 }
 
-func (wp WeatherProxy) proxyGet(url string) ([]byte, error) {
+func (wp WeatherProxy) ProxyGet(url string) ([]byte, error) {
 	var count int64
 	result := wp.DB.Model(GetQuery{}).Where("created_at > ? AND url = ?", time.Now().Add(-wp.StaleTime), url).Count(&count)
 //	fmt.Println("COUNT: ", count)

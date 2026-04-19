@@ -25,7 +25,7 @@ func main() {
 	e.GET("/", func(c *echo.Context) error {
 		wp := WeatherProxy{db, 5*time.Minute}
 
-		response, err := wp.proxyGet("http://api.open-meteo.com/v1/forecast?latitude=50.0614&longitude=19.9366&timezone=auto&current=temperature_2m,precipitation,weather_code,wind_speed_10m")
+		response, err := wp.ProxyGet("http://api.open-meteo.com/v1/forecast?latitude=50.0614&longitude=19.9366&timezone=auto&current=temperature_2m,precipitation,weather_code,wind_speed_10m")
 
 		if err != nil {
 		    e.Logger.Error("failed to get response", "error", err)
