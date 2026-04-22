@@ -55,8 +55,13 @@ jeden endpoint, minimum jedną funkcję proxy, która pobiera dane np. o
 pogodzie, giełdzie, etc. (do wyboru) z zewnętrznego API. Zapytania do
 endpointu można wysyłać w jako GET lub POST.
 
-- [ ] 3.0 Należy stworzyć aplikację we frameworki echo w j. Go, która będzie miała kontroler Pogody, która pozwala na pobieranie danych o pogodzie (lub akcjach giełdowych)
-- [ ] 3.5 Należy stworzyć model Pogoda (lub Giełda) wykorzystując gorm, a dane załadować z listy przy uruchomieniu
-- [ ] 4.0 Należy stworzyć klasę proxy, która pobierze dane z serwisu zewnętrznego podczas zapytania do naszego kontrolera
-- [ ] 4.5 Należy zapisać pobrane dane z zewnątrz do bazy danych
-- [ ] 5.0 Należy rozszerzyć endpoint na więcej niż jedną lokalizację (Pogoda), lub akcje (Giełda) zwracając JSONa
+- [x] 3.0 Należy stworzyć aplikację we frameworki echo w j. Go, która będzie miała kontroler Pogody, która pozwala na pobieranie danych o pogodzie (lub akcjach giełdowych)
+  ([843ac54](https://github.com/26d4/po26/commit/843ac54b7dbc3373151e33485e7d4b5d7b75f23d))
+- [x] 3.5 Należy stworzyć model Pogoda (lub Giełda) wykorzystując gorm, a dane załadować z listy przy uruchomieniu
+  ([253e76c](https://github.com/26d4/po26/commit/253e76c3b94baa07abffb5ebbd835bc05f5ccdc5))
+- [x] 4.0 Należy stworzyć klasę proxy, która pobierze dane z serwisu zewnętrznego podczas zapytania do naszego kontrolera
+  ([253e76c](https://github.com/26d4/po26/commit/253e76c3b94baa07abffb5ebbd835bc05f5ccdc5))
+- [x] 4.5 Należy zapisać pobrane dane z zewnątrz do bazy danych
+  ([253e76c](https://github.com/26d4/po26/commit/253e76c3b94baa07abffb5ebbd835bc05f5ccdc5))
+- [x] 5.0 Należy rozszerzyć endpoint na więcej niż jedną lokalizację (Pogoda), lub akcje (Giełda) zwracając JSONa
+  ([21e0a27](https://github.com/26d4/po26/commit/21e0a27002dd28d6c18d2344053729f3712b8b6a))
