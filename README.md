@@ -11,6 +11,8 @@
 - [x] 5.0 Skrypt w bashu do uruchamiania aplikacji w Pascalu via docker
   ([d805b64](https://github.com/26d4/po26/commit/d805b648a36b40c9ea550b3e79aa77a06defceba))
 
+https://github.com/user-attachments/assets/72479a7f-f180-41a4-9dca-ce6a4182db72
+
 **Zadanie 2** Wzorce architektury
 
 Symfony (PHP)
@@ -24,6 +26,8 @@ Symfony (PHP)
 - [x] 4.5 Należy stworzyć widoki do wszystkich kontrolerów
   ([43673db](https://github.com/26d4/po26/commit/43673db815a7e46f7b37225de0affe80fdabd066))
 - [ ] 5.0 Stworzenie panelu administracyjnego
+
+https://github.com/user-attachments/assets/f45cf572-cbdd-49ef-994d-b2f91d427b94
 
 **Zadanie 3** Wzorce kreacyjne
 
@@ -47,6 +51,8 @@ Boot. Serwis do autoryzacji powinien być singletonem.
 - [x] 5.0 Obok wersji Eager do wyboru powinna być wersja Singletona w wersji lazy
   ([fddcdb6](https://github.com/26d4/po26/commit/fddcdb6dd4c5176e244c2ab300f52456f66c86e7))
 
+https://github.com/user-attachments/assets/484465be-8828-4f6c-ab10-d0f5022e4077
+
 **Zadanie 4** Wzorce strukturalne
 
 Echo (Go)
@@ -65,3 +71,5 @@ endpointu można wysyłać w jako GET lub POST.
   ([253e76c](https://github.com/26d4/po26/commit/253e76c3b94baa07abffb5ebbd835bc05f5ccdc5))
 - [x] 5.0 Należy rozszerzyć endpoint na więcej niż jedną lokalizację (Pogoda), lub akcje (Giełda) zwracając JSONa
   ([21e0a27](https://github.com/26d4/po26/commit/21e0a27002dd28d6c18d2344053729f3712b8b6a))
+
+https://github.com/user-attachments/assets/47e5f430-84b6-4af4-990b-98b01a0d63ff
