@@ -33,8 +33,6 @@ function Products() {
             </ul>
         </div>
     );
-
-	// return <h1>Produkty</h1>;
 }
 
 export { Products }
