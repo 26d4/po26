@@ -1,13 +1,9 @@
 import './App.css'
-
+import { Products } from './Products'
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 function Home() {
 	return <h1>Home Page</h1>;
-}
-
-function Products() {
-	return <h1>Produkty</h1>;
 }
 
 function Payments() {
