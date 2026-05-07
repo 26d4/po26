@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import global from "./global";
+import { API_URL } from "./global";
 
 function Products() {
 	const [data, setData] = useState([])
@@ -9,7 +9,7 @@ function Products() {
 
 	useEffect(() => {
 		axios
-			.get(global.API_URL + '/products')
+			.get(API_URL + '/products')
 			.then((response) => {
                 setData(response.data);
                 setLoading(false);
