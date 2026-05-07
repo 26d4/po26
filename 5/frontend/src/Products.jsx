@@ -2,7 +2,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { API_URL } from "./global";
 
-function Products() {
+function Product({id, name, price, dispatch}) {
+    return <>{name}: {price} <button onClick={() => dispatch({type: 'add', id: id, count: 1, name: name})}>Do koszyka</button></>
+}
+
+function Products({dispatch}) {
 	const [data, setData] = useState([])
 	const [loading, setLoading] = useState([true])
 	const [error, setError] = useState(null)
@@ -28,7 +32,7 @@ function Products() {
             <h1>Produkty</h1>
             <ul>
                 {data.map((p) => (
-                    <li key={p.id}>{p.name}: {p.price}</li>
+                    <li key={p.id}><Product id={p.id} name={p.name} price={p.price} dispatch={dispatch}/></li>
                 ))}
             </ul>
         </div>
