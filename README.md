@@ -78,19 +78,24 @@ https://github.com/user-attachments/assets/47e5f430-84b6-4af4-990b-98b01a0d63ff
 
 React (JavaScript/Typescript)
 
-- [ ] 3.0 W ramach projektu należy stworzyć komponenty Produkty oraz
-Płatności; komponent Produkty powinien pobierać listę produktów z
-aplikacji serwerowej, natomiast komponent Płatności powinien wysyłać
-dane płatności do aplikacji serwerowej.
-- [ ] 3.5 Należy dodać komponent Koszyk wraz z osobnym widokiem; aplikacja
-powinna umożliwiać przechodzenie pomiędzy widokami przy użyciu
-routingu.
-- [ ] 4.0 Dane pomiędzy komponentami, takimi jak Produkty, Koszyk i
-Płatności, powinny być przekazywane z wykorzystaniem React hooks, np.
-useState, useEffect lub useContext.
-- [ ] 4.5 Należy przygotować konfigurację umożliwiającą uruchomienie
-aplikacji klienckiej oraz serwerowej w kontenerach Docker za pomocą
-docker-compose.
-- [ ] 5.0 Należy wykorzystać bibliotekę axios do komunikacji z serwerem oraz
-skonfigurować obsługę CORS, aby frontend mógł poprawnie komunikować
-się z backendem.
+- [x] 3.0 W ramach projektu należy stworzyć komponenty Produkty oraz
+  Płatności; komponent Produkty powinien pobierać listę produktów z
+  aplikacji serwerowej, natomiast komponent Płatności powinien wysyłać
+  dane płatności do aplikacji serwerowej.
+  ([5ad9dd9](https://github.com/26d4/po26/commit/5ad9dd949ddbd67b56a396dd803dc8b710c34d2c))
+- [x] 3.5 Należy dodać komponent Koszyk wraz z osobnym widokiem; aplikacja
+  powinna umożliwiać przechodzenie pomiędzy widokami przy użyciu
+  routingu.
+  ([9e5aa8a](https://github.com/26d4/po26/commit/9e5aa8a0be55e904a58bf73765367baf91e46993))
+- [x] 4.0 Dane pomiędzy komponentami, takimi jak Produkty, Koszyk i
+  Płatności, powinny być przekazywane z wykorzystaniem React hooks, np.
+  useState, useEffect lub useContext.
+  ([9e5aa8a](https://github.com/26d4/po26/commit/9e5aa8a0be55e904a58bf73765367baf91e46993))
+- [x] 4.5 Należy przygotować konfigurację umożliwiającą uruchomienie
+  aplikacji klienckiej oraz serwerowej w kontenerach Docker za pomocą
+  docker-compose.
+  ([80eb434](https://github.com/26d4/po26/commit/80eb434b776191a2f5216561a09943db759951cb))
+- [x] 5.0 Należy wykorzystać bibliotekę axios do komunikacji z serwerem oraz
+  skonfigurować obsługę CORS, aby frontend mógł poprawnie komunikować
+  się z backendem.
+  ([313b735](https://github.com/26d4/po26/commit/313b735e3a4f1c490edfa69186f875f115ba5009))
