@@ -1,15 +1,12 @@
 import './App.css'
 import { Products } from './Products'
 import { Cart } from './Cart'
+import { Payments } from './Payments';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import { useReducer } from 'react';
 
 function Home() {
 	return <h1>Home Page</h1>;
-}
-
-function Payments() {
-	return <h1>Płatności</h1>;
 }
 
 function cartReducer(state, action) {
@@ -22,6 +19,21 @@ function cartReducer(state, action) {
 					count: (state[action.id] ? state[action.id].count : 0) + action.count
 				}
 			}
+		}
+		case 'remove': {
+			var newCount = state[action.id].count - action.count
+			return newCount <= 0
+				? Object.fromEntries(Object.entries(state).filter(([key]) => key != action.id))
+				: {
+					...state,
+					[action.id]: {
+						...state[action.id],
+						count: newCount
+					}
+				}
+		}
+		case 'clear': {
+			return {}
 		}
 	}
 }
@@ -43,8 +55,8 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/products" element={<Products dispatch={cartDispatch}/>} />
-				<Route path="/cart" element={<Cart state={cartState}/>}/>
-				<Route path="/payments" element={<Payments />} />
+				<Route path="/cart" element={<Cart state={cartState} dispatch={cartDispatch}/>}/>
+				<Route path="/payments" element={<Payments state={cartState} dispatch={cartDispatch}/>} />
 			</Routes>
 		</BrowserRouter>
 	);

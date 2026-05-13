@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { API_URL } from "./global";
 
 function Product({id, name, price, dispatch}) {
-    return <>{name}: {price} <button onClick={() => dispatch({type: 'add', id: id, count: 1, name: name})}>Do koszyka</button></>
+    return <>{name}: {price} <button onClick={() => dispatch({type: 'add', id, count: 1, name})}>Do koszyka</button></>
 }
 
 function Products({dispatch}) {
@@ -24,15 +24,15 @@ function Products({dispatch}) {
             });
 	}, [])
 
-	if (loading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error}</div>;
+	if (loading) return <div>Wczytywanie...</div>;
+    if (error) return <div>Błąd: {error}</div>;
 
     return (
         <div>
             <h1>Produkty</h1>
             <ul>
-                {data.map((p) => (
-                    <li key={p.id}><Product id={p.id} name={p.name} price={p.price} dispatch={dispatch}/></li>
+                {Object.entries(data).map(([id, p]) => (
+                    <li key={id}><Product id={id} name={p.name} price={p.price} dispatch={dispatch}/></li>
                 ))}
             </ul>
         </div>

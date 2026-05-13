@@ -4,18 +4,26 @@ const app = express()
 const port = 3000
 
 app.use(cors())
+app.use(express.json())
 
-const products = [
-	{id: 1, name: 'foo', price: 99},
-	{id: 2, name: 'bar', price: 10}
-]
+const products = {
+	1: {name: 'foo', price: 99},
+	2: {name: 'bar', price: 10}
+}
 
 app.get('/products', (req, res) => {
 	res.json(products)
 })
 
-app.post('/payments', (req, res) => {
-	res.sendStatus(201)
+app.post('/payment', (req, res) => {
+	paid = 0
+	for (k in req.body) {
+		if (k in products) {
+			paid += req.body[k] * products[k].price
+		}
+	}
+
+	res.json({paid})
 })
 
 app.listen(port, () => {
