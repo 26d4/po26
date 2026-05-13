@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { API_URL } from "./global";
 
 function Product({id, name, price, dispatch}) {
     return <>{name}: {price} <button onClick={() => dispatch({type: 'add', id, count: 1, name})}>Do koszyka</button></>
@@ -13,7 +12,7 @@ function Products({dispatch}) {
 
 	useEffect(() => {
 		axios
-			.get(API_URL + '/products')
+			.get(import.meta.env.VITE_API_URL + '/products')
 			.then((response) => {
                 setData(response.data);
                 setLoading(false);

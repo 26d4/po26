@@ -1,0 +1,17 @@
+services:
+  frontend:
+    build:
+      context: frontend
+      network: host
+    ports:
+      - 80:80
+    depends_on:
+      - backend
+  
+  backend:
+    build:
+      context: backend
+      network: host
+    ports:
+      - 3000:3000
+    init: true

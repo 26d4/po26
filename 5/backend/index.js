@@ -8,7 +8,8 @@ app.use(express.json())
 
 const products = {
 	1: {name: 'foo', price: 99},
-	2: {name: 'bar', price: 10}
+	2: {name: 'bar', price: 10},
+	3: {name: 'baz', price: 21}
 }
 
 app.get('/products', (req, res) => {

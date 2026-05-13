@@ -1,13 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { API_URL } from "./global";
 
 function Payments({state, dispatch}) {
 	function doPayment(state, dispatch) {
 		var info = Object.fromEntries(Object.entries(state).map(([id, p]) => [id, p.count]))
 
 		axios
-			.post(API_URL + '/payment', info)
+			.post(import.meta.env.VITE_API_URL + '/payment', info)
 			.then((response) => {
 				dispatch({type: 'clear'})
 				alert('Zapłacono ' + response.data.paid)
@@ -23,7 +22,7 @@ function Payments({state, dispatch}) {
 
 	useEffect(() => {
 		axios
-			.get(API_URL + '/products')
+			.get(import.meta.env.VITE_API_URL + '/products')
 			.then((response) => {
                 setData(response.data);
                 setLoading(false);
