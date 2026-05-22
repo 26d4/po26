@@ -111,8 +111,9 @@ Należy sprawdzić kod projektów JS 3.0, 3.5, 4.0,  kotlin, go, js -
 - [x] 3.5 Należy wyeliminować wszystkie bugi w kodzie w Sonarze (kod
   aplikacji klienckiej)
   ([b0e8d0b](https://github.com/26d4/po26/commit/b0e8d0bdca33bea24bfafd50cdb831ab5bd81e14))
-- [ ] 4.0 Przeskanować oraz naprawić dowolny projekt open source narzędziem
+- [x] 4.0 Przeskanować oraz naprawić dowolny projekt open source narzędziem
   CodeQL https://codeql.github.com/
+  ([0975077](https://github.com/26d4/po26/commit/0975077da1b0ab97b53261dbb6b3a2bb12b7544f))
 - [ ] 4.5 Należy usunąć problemy typu Code Smell w kodzie w Sonarze (kotlin,
   go, js). Należy dodać badge z Sonara
 - [ ] 5.0 Skonfigurować Github Actions z linterem oraz CodeQL
