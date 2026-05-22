@@ -105,10 +105,12 @@ React (JavaScript/Typescript)
 Należy sprawdzić kod projektów JS 3.0, 3.5, 4.0,  kotlin, go, js -
 4.5, 5.0.
 
-- [ ] 3.0 Należy skonfigurować husky + lint-staged uruchamianie lintowania
+- [x] 3.0 Należy skonfigurować husky + lint-staged uruchamianie lintowania
   przed commitem
-- [ ] 3.5 Należy wyeliminować wszystkie bugi w kodzie w Sonarze (kod
+  ([259dd62](https://github.com/26d4/po26/commit/259dd623d7e04c056d609f5fa0e44b016a61e194))
+- [x] 3.5 Należy wyeliminować wszystkie bugi w kodzie w Sonarze (kod
   aplikacji klienckiej)
+  ([b0e8d0b](https://github.com/26d4/po26/commit/b0e8d0bdca33bea24bfafd50cdb831ab5bd81e14))
 - [ ] 4.0 Przeskanować oraz naprawić dowolny projekt open source narzędziem
   CodeQL https://codeql.github.com/
 - [ ] 4.5 Należy usunąć problemy typu Code Smell w kodzie w Sonarze (kotlin,
