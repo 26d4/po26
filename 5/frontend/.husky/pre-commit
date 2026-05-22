@@ -1,6 +1,3 @@
 cd 5/frontend
 
-echo test
 npx lint-staged
-
-exit 1
