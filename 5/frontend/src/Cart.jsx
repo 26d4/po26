@@ -1,3 +1,5 @@
+import PropTypes from "prop-types"
+
 function CartEntry({id, name, count, dispatch}) {
 	return (
 		<>
@@ -23,6 +25,18 @@ function Cart({state, dispatch}) {
 			)}
 		</div>
 	)
+}
+
+CartEntry.propTypes = {
+	id: PropTypes.number,
+	name: PropTypes.string,
+	count: PropTypes.number,
+	dispatch: PropTypes.func
+}
+
+Cart.propTypes = {
+	state: PropTypes.object,
+	dispatch: PropTypes.func
 }
 
 export { Cart }

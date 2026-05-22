@@ -1,9 +1,10 @@
 import axios from "axios";
+import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 
 function Payments({state, dispatch}) {
 	function doPayment(state, dispatch) {
-		var info = Object.fromEntries(Object.entries(state).map(([id, p]) => [id, p.count]))
+		let info = Object.fromEntries(Object.entries(state).map(([id, p]) => [id, p.count]))
 
 		axios
 			.post(import.meta.env.VITE_API_URL + '/payment', info)
@@ -33,10 +34,10 @@ function Payments({state, dispatch}) {
             });
 	}, [])
 
-	if (loading) return <div>Wczytywanie...</div>;
-    if (error) return <div>Błąd: {error}</div>;
+	if (loading) { return <div>Wczytywanie...</div> }
+    if (error) { return <div>Błąd: {error}</div> }
 
-	var payment = Object.keys(state).reduce((p, id) => p + data[id].price * state[id].count, 0)
+	let payment = Object.keys(state).reduce((p, id) => p + data[id].price * state[id].count, 0)
 
 	return (
 		<div>
@@ -55,6 +56,11 @@ function Payments({state, dispatch}) {
 			)}
 		</div>
 	)
+}
+
+Payments.propTypes = {
+	state: PropTypes.object,
+	dispatch: PropTypes.func
 }
 
 export { Payments }

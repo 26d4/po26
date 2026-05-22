@@ -1,4 +1,5 @@
 import axios from "axios";
+import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 
 function Product({id, name, price, dispatch}) {
@@ -36,6 +37,17 @@ function Products({dispatch}) {
             </ul>
         </div>
     );
+}
+
+Product.propTypes = {
+    id: PropTypes.number,
+    name: PropTypes.string,
+    price: PropTypes.number,
+    dispatch: PropTypes.func
+}
+
+Products.propTypes = {
+    dispatch: PropTypes.func
 }
 
 export { Products }

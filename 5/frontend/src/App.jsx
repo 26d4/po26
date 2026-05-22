@@ -1,4 +1,3 @@
-import './App.css'
 import { Products } from './Products'
 import { Cart } from './Cart'
 import { Payments } from './Payments';
@@ -21,7 +20,7 @@ function cartReducer(state, action) {
 			}
 		}
 		case 'remove': {
-			var newCount = state[action.id].count - action.count
+			let newCount = state[action.id].count - action.count
 			return newCount <= 0
 				? Object.fromEntries(Object.entries(state).filter(([key]) => key != action.id))
 				: {
