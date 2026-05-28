@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+docker build "$(dirname "$0")" -t vapor -f- <<-EOF
+	FROM homebrew/brew
+	RUN brew install vapor
+	WORKDIR /home/linuxbrew/wd
+	ENTRYPOINT ["vapor"]
+EOF
+
+docker run -it --rm -v "$(pwd)":/home/linuxbrew/wd vapor "$@"
