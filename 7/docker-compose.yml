@@ -74,3 +74,12 @@ services:
       POSTGRES_DB: *db_name
     ports:
       - '5432:5432'
+  temp_db:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_USER: *db_username
+      POSTGRES_PASSWORD: *db_password
+      POSTGRES_DB: *db_name
+    ports:
+      - '5432:5432'
+    command: ["postgres", "-c", "log_statement=all", "-c", "log_destination=stderr"]

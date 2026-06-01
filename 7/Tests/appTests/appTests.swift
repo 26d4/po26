@@ -30,55 +30,74 @@ struct appTests {
         }
     }
     
-    @Test("Getting all the Todos")
-    func getAllTodos() async throws {
+    @Test("Getting all the Products")
+    func getAllProducts() async throws {
         try await withApp { app in
-            let sampleTodos = [Todo(title: "sample1"), Todo(title: "sample2")]
-            try await sampleTodos.create(on: app.db)
+            let sampleProducts = [Product(name: "sample1", price: 1990), Product(name: "sample2", price: 9000)]
+            try await sampleProducts.create(on: app.db)
             
-            try await app.testing().test(.GET, "todos", afterResponse: { res async throws in
+            try await app.testing().test(.GET, "products", afterResponse: { res async throws in
                 #expect(res.status == .ok)
                 #expect(try
-                    res.content.decode([TodoDTO].self).sorted(by: { ($0.title ?? "") < ($1.title ?? "") }) ==
-                    sampleTodos.map { $0.toDTO() }.sorted(by: { ($0.title ?? "") < ($1.title ?? "") })
+                    res.content.decode([ProductDTO].self).sorted(by: { ($0.name ?? "") < ($1.name ?? "") }) ==
+                    sampleProducts.map { $0.toDTO() }.sorted(by: { ($0.name ?? "") < ($1.name ?? "") })
                 )
             })
         }
     }
     
-    @Test("Creating a Todo")
-    func createTodo() async throws {
-        let newDTO = TodoDTO(id: nil, title: "test")
+    @Test("Creating a Product")
+    func createProduct() async throws {
+        let newDTO = ProductDTO(id: nil, name: "test", price: 1997)
         
         try await withApp { app in
-            try await app.testing().test(.POST, "todos", beforeRequest: { req in
+            try await app.testing().test(.POST, "products", beforeRequest: { req in
                 try req.content.encode(newDTO)
             }, afterResponse: { res async throws in
                 #expect(res.status == .ok)
-                let models = try await Todo.query(on: app.db).all()
-                #expect(models.map({ $0.toDTO().title }) == [newDTO.title])
+                let models = try await Product.query(on: app.db).all()
+                #expect(models.map({ $0.toDTO().name }) == [newDTO.name])
             })
         }
     }
     
-    @Test("Deleting a Todo")
-    func deleteTodo() async throws {
-        let testTodos = [Todo(title: "test1"), Todo(title: "test2")]
+    @Test("Deleting a Product")
+    func deleteProduct() async throws {
+        let testProducts = [Product(name: "test1", price: 1999), Product(name: "test2", price: 2499)]
         
         try await withApp { app in
-            try await testTodos.create(on: app.db)
+            try await testProducts.create(on: app.db)
             
-            try await app.testing().test(.DELETE, "todos/\(testTodos[0].requireID())", afterResponse: { res async throws in
+            try await app.testing().test(.DELETE, "products/\(testProducts[0].requireID())", afterResponse: { res async throws in
                 #expect(res.status == .noContent)
-                let model = try await Todo.find(testTodos[0].id, on: app.db)
+                let model = try await Product.find(testProducts[0].id, on: app.db)
                 #expect(model == nil)
+            })
+        }
+    }
+
+    @Test("Updating Product")
+    func updateProduct() async throws {
+        let testProduct = Product(name: "test1", price: 1999)
+        let newDTO = ProductDTO(id: nil, name: nil, price: 1549)
+        
+        try await withApp { app in
+            try await testProduct.create(on: app.db)
+            
+            try await app.testing().test(.PATCH, "products/\(testProduct.requireID())", beforeRequest: { req in
+                try req.content.encode(newDTO)
+            }, afterResponse: { res async throws in
+                #expect(res.status == .ok)
+                if let model = try await Product.find(testProduct.id, on: app.db) {
+                    #expect(model.$price.value == newDTO.price)
+                }
             })
         }
     }
 }
 
-extension TodoDTO: Equatable {
+extension ProductDTO: Equatable {
     public static func == (lhs: Self, rhs: Self) -> Bool {
-        lhs.id == rhs.id && lhs.title == rhs.title
+        lhs.id == rhs.id && lhs.name == rhs.name && lhs.price == rhs.price
     }
 }
