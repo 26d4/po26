@@ -1,0 +1,25 @@
+#extend("main"):
+
+#export("body"):
+	<h1>Products</h1>
+	<table border=1>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+		#for(product in products):
+			<tr>
+				<td>#(product.name)</td>
+				<td>#(product.price)</td>
+				<td><a href="/products/#(product.id)/delete">Delete</a></td>
+			</tr>
+		#endfor
+		</tbody>
+	</table>
+#endexport
+
+#endextend

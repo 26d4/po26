@@ -10,5 +10,6 @@ func routes(_ app: Application) throws {
         "Hello, world!"
     }
 
-    try app.register(collection: ApiProductController())
+    try app.grouped("api").register(collection: ApiProductController())
+    try app.register(collection: ProductController())
 }

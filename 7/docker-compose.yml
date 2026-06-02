@@ -41,6 +41,8 @@ services:
     develop:
       watch:
         - path: .
+          ignore:
+            - .build/
           action: rebuild
   migrate:
     image: app:latest

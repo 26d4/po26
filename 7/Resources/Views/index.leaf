@@ -1,12 +1,7 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
+#extend("main"):
 
-  <title>#(title)</title>
-</head>
+#export("body"):
+    <h1>#(title)</h1>
+#endexport
 
-<body>
-  <h1>#(title)</h1>
-</body>
-</html>
+#endextend
