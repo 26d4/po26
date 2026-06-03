@@ -100,6 +100,8 @@ React (JavaScript/Typescript)
   się z backendem.
   ([313b735](https://github.com/26d4/po26/commit/313b735e3a4f1c490edfa69186f875f115ba5009))
 
+https://github.com/user-attachments/assets/eb92216a-e3e4-4c72-a4fc-3226fed2a854
+
 **Zadanie 6** Zapaszki
 
 Należy sprawdzić kod projektów JS 3.0, 3.5, 4.0,  kotlin, go, js -
@@ -125,8 +127,12 @@ silnik szablonów or Fluent jako ORM. Proszę stworzyć trzy modele oraz
 CRUD dla każdego z nich. Należy stworzyć model z minimum jedną
 relacją. CRUD powinien mieć odzwierciedlenie w szablonach.
 
-- [ ] 3.0 Należy stworzyć kontroler wraz z modele Produktów zgodny z CRUD w ORM Fluent
-- [ ] 3.5 Należy stworzyć szablony w Leaf
+- [x] 3.0 Należy stworzyć kontroler wraz z modele Produktów zgodny z CRUD w ORM Fluent
+  ([43eac62](https://github.com/26d4/po26/commit/43eac62c428fba41a1796febaaf2cfb88a1aff7a))
+- [x] 3.5 Należy stworzyć szablony w Leaf
+  ([642feab](https://github.com/26d4/po26/commit/642feab1492a6adae0e004419135414178eac40d))
 - [ ] 4.0 Należy stworzyć drugi model oraz kontroler Kategorii wraz z relacją
 - [ ] 4.5 Należy wykorzystać Redis do przechowywania danych
 - [ ] 5.0 Wrzucić aplikację na heroku
+
+https://github.com/user-attachments/assets/c03dbe5b-8efe-478a-8661-482084010b5f
