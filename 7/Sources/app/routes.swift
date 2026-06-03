@@ -1,5 +1,6 @@
 import Fluent
 import Vapor
+import LeafErrorMiddleware
 
 func routes(_ app: Application) throws {
     app.get { req async throws in
@@ -10,6 +11,6 @@ func routes(_ app: Application) throws {
         "Hello, world!"
     }
 
+    try app.grouped(LeafErrorMiddlewareDefaultGenerator.build()).register(collection: ProductController())
     try app.grouped("api").register(collection: ApiProductController())
-    try app.register(collection: ProductController())
 }

@@ -15,11 +15,15 @@
 			<tr>
 				<td>#(product.name)</td>
 				<td>#(product.price)</td>
-				<td><a href="/products/#(product.id)/delete">Delete</a></td>
+				<td>
+					<a href="/products/#(product.id)/edit">Edit</a>
+					<a href="/products/#(product.id)/delete">Delete</a>
+				</td>
 			</tr>
 		#endfor
 		</tbody>
 	</table>
+	<a href="/products/new">New</a>
 #endexport
 
 #endextend

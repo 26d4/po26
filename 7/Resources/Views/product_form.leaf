@@ -1,0 +1,12 @@
+#extend("main"):
+#export("body"):
+	<h1>#(title)</h1>
+	<form action="#(action)" method="POST">
+		<label for="name">Name</label>
+		<input name="name" type="text" #if(product.name): value="#(product.name)" #endif required>
+		<label for="price">Price</label>
+		<input name="price" type="number" min="0" #if(product.price): value="#(product.price)" #endif required>
+		<input type="submit">
+	</form>
+#endexport
+#endextend

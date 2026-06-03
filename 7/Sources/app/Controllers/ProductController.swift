@@ -6,18 +6,15 @@ struct ProductController: RouteCollection {
         let products = routes.grouped("products")
 
         products.get(use: self.index)
-        products.post(use: self.create)
-        products.group(":productID") { product in
-            product.group("delete") { product in
-                product.get(use: self.delete)
-            }
-            // product.put(use: self.update)
-            // product.patch(use: self.update)
+        products.group("new") { product in
+            product.post(use: self.create)
+            product.get(use: self.create_form)
         }
-    }
-
-    struct ProductListContext: Encodable {
-        let products: [Product]
+        products.group(":productID") { product in
+            product.get("delete", use: self.delete)
+            product.get("edit", use: self.update_form)
+            product.post("edit", use: self.update)
+        }
     }
 
     @Sendable
@@ -40,6 +37,11 @@ struct ProductController: RouteCollection {
     }
 
     @Sendable
+    func create_form(req: Request) async throws -> View {
+        return try await req.view.render("product_form", ["title": "New product", "action": "/products/new"])
+    }
+
+    @Sendable
     func delete(req: Request) async throws -> Response {
         guard let product = try await Product.find(req.parameters.get("productID"), on: req.db) else {
             throw Abort(.notFound)
@@ -50,7 +52,7 @@ struct ProductController: RouteCollection {
     }
 
     @Sendable
-    func update(req: Request) async throws -> ProductDTO {
+    func update(req: Request) async throws -> Response {
         guard let id = req.parameters.get("productID", as: UUID.self) else {
             throw Abort(.badRequest)
         }
@@ -61,13 +63,35 @@ struct ProductController: RouteCollection {
             throw Abort(.notFound)
         }
 
-        try needValue(v: input.name, method: req.method)
-        try needValue(v: input.price, method: req.method)
-
         product.name = input.name ?? product.name
         product.price = input.price ?? product.price
 
         try await product.update(on: req.db)
-        return product.toDTO()
+        return req.redirect(to: "/products")
+    }
+
+    @Sendable
+    func update_form(req: Request) async throws -> View {
+        guard let id = req.parameters.get("productID", as: UUID.self) else {
+            throw Abort(.badRequest)
+        }
+
+        guard let product = try await Product.find(id, on: req.db) else {
+            throw Abort(.notFound)
+        }
+
+        struct ProductFormContext: Encodable {
+            let title: String
+            let action: String
+            let product: Product
+        }
+        return try await req.view.render(
+            "product_form",
+            ProductFormContext(
+                title: "Edit \(product.name)",
+                action: "/products/\(id)/edit",
+                product: product
+            )
+        )
     }
 }
