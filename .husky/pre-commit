@@ -1,4 +1,6 @@
 #!/usr/bin/env sh
+git status -s | grep 5/frontend || exit 0
+
 cd 5/frontend
 
 npx lint-staged
