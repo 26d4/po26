@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint",
     "preview": "vite preview",
-    "prepare": "cd ../.. && npx husky 5/frontend/.husky"
+    "prepare": "cd ../.. && npx husky"
   },
   "lint-staged": {
     "*.{js,jsx}": [

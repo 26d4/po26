@@ -1,3 +1,4 @@
+#!/usr/bin/env sh
 cd 5/frontend
 
 npx lint-staged
