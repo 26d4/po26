@@ -159,3 +159,17 @@ innej karcie.
 - [ ] 5.0 Stwórz scenariusz End-to-End w Playwright (minimum 50 asercji)
 
 https://github.com/user-attachments/assets/17c247d0-7aa6-4d7e-9e06-caeae19020b5
+
+**Zadanie 9** Chmura
+
+- [x] 3.0 Należy stworzyć odpowiednie instancje po stronie chmury na
+dockerze
+- [ ] 3.5 Stworzyć odpowiedni pipeline w Github Actions do budowania
+aplikacji
+- [ ] 4.0 Dodać notyfikację mailową o zbudowaniu aplikacji
+- [ ] 4.5 Dodać krok z deploymentem aplikacji serwerowej oraz klienckiej na
+chmurę
+- [ ] 5.0 Dodać uruchomienie regresyjnych testów automatycznych
+(funkcjonalnych) jako krok w Actions
+
+https://github.com/user-attachments/assets/60be9995-ef1d-478d-843a-cf91a61fec29
